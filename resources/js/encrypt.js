@@ -23,6 +23,8 @@ $("#SHA").change(function() {
         $('#options').attr('style', 'pointer-events:none');
         $('#options').attr('disabled', 'disabled');
         $('#options').attr('style', 'opacity:0.4');
+
+        $('#fileCard').html('File (Max size 2MB)');
     }
 
 });
@@ -31,40 +33,44 @@ $("#AES").change(function() {
     if ($(this).prop("checked") == true) {
 
         if ($('#encInputFile').is(":visible")) {
-          if ($('#auto').prop("checked") != true) {
-            $('#encInputFile').attr('style', 'pointer-events:auto');
-            $('#encInputFile').attr('style', 'opacity:1.0');
-          }
+            if ($('#auto').prop("checked") != true) {
+                $('#encInputFile').attr('style', 'pointer-events:auto');
+                $('#encInputFile').attr('style', 'opacity:1.0');
+            }
         } else {
-          if ($('#auto').prop("checked") != true) {
+            if ($('#auto').prop("checked") != true) {
 
-            $('#encInputText').attr('style', 'pointer-events:auto');
-            $('#encInputText').attr('style', 'opacity:1.0');
-          }
+                $('#encInputText').attr('style', 'pointer-events:auto');
+                $('#encInputText').attr('style', 'opacity:1.0');
+            }
         }
         $('#options').attr('style', 'pointer-events:auto');
         $('#options').removeAttr('disabled');
         $('#options').attr('style', 'opacity:1.0');
+
+        $('#fileCard').html('File (Max size 2MB)');
     }
 });
 
 $("#RSA").change(function() {
     if ($(this).prop("checked") == true) {
-      if ($('#encInputFile').is(":visible")) {
-        if ($('#auto').prop("checked") != true) {
-          $('#encInputFile').attr('style', 'pointer-events:auto');
-          $('#encInputFile').attr('style', 'opacity:1.0');
-        }
-      } else {
-        if ($('#auto').prop("checked") != true) {
+        if ($('#encInputFile').is(":visible")) {
+            if ($('#auto').prop("checked") != true) {
+                $('#encInputFile').attr('style', 'pointer-events:auto');
+                $('#encInputFile').attr('style', 'opacity:1.0');
+            }
+        } else {
+            if ($('#auto').prop("checked") != true) {
 
-          $('#encInputText').attr('style', 'pointer-events:auto');
-          $('#encInputText').attr('style', 'opacity:1.0');
+                $('#encInputText').attr('style', 'pointer-events:auto');
+                $('#encInputText').attr('style', 'opacity:1.0');
+            }
         }
-      }
-      $('#options').attr('style', 'pointer-events:auto');
-      $('#options').removeAttr('disabled');
-      $('#options').attr('style', 'opacity:1.0');
+        $('#options').attr('style', 'pointer-events:auto');
+        $('#options').removeAttr('disabled');
+        $('#options').attr('style', 'opacity:1.0');
+
+        $('#fileCard').html('File (Max size 10KB)');
     }
 });
 

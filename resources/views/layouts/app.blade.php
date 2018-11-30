@@ -25,8 +25,13 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
+      <a class="navbar-left" style="float: left" href="{{ url('http://www.scytale.ceid.upatras.gr/index.php/en/') }}">
+        <img src="{{asset('/scytale_group_logo_new.png')}}" style="display: inline-block;">
+      </a>
+        {{-- <nav class="navbar navbar-expand-md navbar-dark navbar-laravel"> --}}
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
+                    {{-- <img src="{{asset('/scytale_group_logo_new.png')}}" style="display: inline-block;"> --}}
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

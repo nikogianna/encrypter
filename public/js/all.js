@@ -20,6 +20,7 @@ $("#AESdec").change(function() {
 
         $(this).val('true');
         $('#RSAdec').val('false');
+        $('#fileDecCard').html('File (Max size 2MB)');
     }
 });
 
@@ -28,6 +29,7 @@ $("#RSAdec").change(function() {
 
         $(this).val('true');
         $('#AESdec').val('false');
+        $('#fileDecCard').html('File (Max size 10KB)');
     }
 });
 
@@ -56,48 +58,59 @@ $("#SHA").change(function() {
         $('#options').attr('style', 'pointer-events:none');
         $('#options').attr('disabled', 'disabled');
         $('#options').attr('style', 'opacity:0.4');
-    }
 
+        $('#fileCard').html('File (Max size 2MB)');
+    }
+});
+
+var $myGroup = $('#myGroup');
+$myGroup.on('show.bs.collapse','.collapse', function() {
+    $myGroup.find('.collapse.show').collapse('hide');
 });
 
 $("#AES").change(function() {
     if ($(this).prop("checked") == true) {
 
         if ($('#encInputFile').is(":visible")) {
-          if ($('#auto').prop("checked") != true) {
-            $('#encInputFile').attr('style', 'pointer-events:auto');
-            $('#encInputFile').attr('style', 'opacity:1.0');
-          }
+            if ($('#auto').prop("checked") != true) {
+                $('#encInputFile').attr('style', 'pointer-events:auto');
+                $('#encInputFile').attr('style', 'opacity:1.0');
+            }
         } else {
-          if ($('#auto').prop("checked") != true) {
+            if ($('#auto').prop("checked") != true) {
 
-            $('#encInputText').attr('style', 'pointer-events:auto');
-            $('#encInputText').attr('style', 'opacity:1.0');
-          }
+                $('#encInputText').attr('style', 'pointer-events:auto');
+                $('#encInputText').attr('style', 'opacity:1.0');
+            }
         }
         $('#options').attr('style', 'pointer-events:auto');
         $('#options').removeAttr('disabled');
         $('#options').attr('style', 'opacity:1.0');
+
+        $('#fileCard').html('File (Max size 2MB)');
     }
+
 });
 
 $("#RSA").change(function() {
     if ($(this).prop("checked") == true) {
-      if ($('#encInputFile').is(":visible")) {
-        if ($('#auto').prop("checked") != true) {
-          $('#encInputFile').attr('style', 'pointer-events:auto');
-          $('#encInputFile').attr('style', 'opacity:1.0');
-        }
-      } else {
-        if ($('#auto').prop("checked") != true) {
+        if ($('#encInputFile').is(":visible")) {
+            if ($('#auto').prop("checked") != true) {
+                $('#encInputFile').attr('style', 'pointer-events:auto');
+                $('#encInputFile').attr('style', 'opacity:1.0');
+            }
+        } else {
+            if ($('#auto').prop("checked") != true) {
 
-          $('#encInputText').attr('style', 'pointer-events:auto');
-          $('#encInputText').attr('style', 'opacity:1.0');
+                $('#encInputText').attr('style', 'pointer-events:auto');
+                $('#encInputText').attr('style', 'opacity:1.0');
+            }
         }
-      }
-      $('#options').attr('style', 'pointer-events:auto');
-      $('#options').removeAttr('disabled');
-      $('#options').attr('style', 'opacity:1.0');
+        $('#options').attr('style', 'pointer-events:auto');
+        $('#options').removeAttr('disabled');
+        $('#options').attr('style', 'opacity:1.0');
+
+        $('#fileCard').html('File (Max size 10KB)');
     }
 });
 
@@ -138,35 +151,99 @@ $("#manualText").change(function() {
     }
 });
 
-var $button1 = document.querySelector('.button1');
-$button1.addEventListener('click', function() {
-  var duration = 0.3,
-      delay = 0.08;
-  TweenMax.to($button1, duration, {scaleY: 1.6, ease: Expo.easeOut});
-  TweenMax.to($button1, duration, {scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay});
-  TweenMax.to($button1, duration * 1.25, {scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+var b1 = $('#button1');
+var b2 = $('#button2');
+var b3 = $('#button3');
+var b4 = $('#button4');
+
+b1.on('click', function() {
+    var duration = 0.3,
+        delay = 0.08;
+    TweenMax.to(b1, duration, {
+        scaleY: 1.6,
+        ease: Expo.easeOut
+    });
+    TweenMax.to(b1, duration, {
+        scaleX: 1.2,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [3],
+        delay: delay
+    });
+    TweenMax.to(b1, duration * 1.25, {
+        scaleX: 1,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [6],
+        delay: delay * 3
+    });
 });
-var $button2 = document.querySelector('.button2');
-$button2.addEventListener('click', function() {
-  var duration = 0.3,
-      delay = 0.08;
-  TweenMax.to($button2, duration, {scaleY: 1.6, ease: Expo.easeOut});
-  TweenMax.to($button2, duration, {scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay});
-  TweenMax.to($button2, duration * 1.25, {scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+
+b2.on('click', function() {
+    var duration = 0.3,
+        delay = 0.08;
+    TweenMax.to(b2, duration, {
+        scaleY: 1.6,
+        ease: Expo.easeOut
+    });
+    TweenMax.to(b2, duration, {
+        scaleX: 1.2,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [3],
+        delay: delay
+    });
+    TweenMax.to(b2, duration * 1.25, {
+        scaleX: 1,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [6],
+        delay: delay * 3
+    });
 });
-var $button3 = document.querySelector('.button3');
-$button3.addEventListener('click', function() {
-  var duration = 0.3,
-      delay = 0.08;
-  TweenMax.to($button3, duration, {scaleY: 1.6, ease: Expo.easeOut});
-  TweenMax.to($button3, duration, {scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay});
-  TweenMax.to($button3, duration * 1.25, {scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+
+b3.on('click', function() {
+    var duration = 0.3,
+        delay = 0.08;
+    TweenMax.to(b3, duration, {
+        scaleY: 1.6,
+        ease: Expo.easeOut
+    });
+    TweenMax.to(b3, duration, {
+        scaleX: 1.2,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [3],
+        delay: delay
+    });
+    TweenMax.to(b3, duration * 1.25, {
+        scaleX: 1,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [6],
+        delay: delay * 3
+    });
 });
-var $button4 = document.querySelector('.button4');
-$button4.addEventListener('click', function() {
-  var duration = 0.3,
-      delay = 0.08;
-  TweenMax.to($button4, duration, {scaleY: 1.6, ease: Expo.easeOut});
-  TweenMax.to($button4, duration, {scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay});
-  TweenMax.to($button4, duration * 1.25, {scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+
+b4.on('click', function() {
+    var duration = 0.3,
+        delay = 0.08;
+    TweenMax.to(b4, duration, {
+        scaleY: 1.6,
+        ease: Expo.easeOut
+    });
+    TweenMax.to(b4, duration, {
+        scaleX: 1.2,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [3],
+        delay: delay
+    });
+    TweenMax.to(b4, duration * 1.25, {
+        scaleX: 1,
+        scaleY: 1,
+        ease: Back.easeOut,
+        easeParams: [6],
+        delay: delay * 3
+    });
 });

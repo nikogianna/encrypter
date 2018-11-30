@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-5 text-center">
             <div class="card" id="decInputFile">
-                <div class="card-header">Encryption Key</div>
+                <div class="card-header">Encryption Key File (Max size 10KB)</div>
                 <div class="card-body">
                     @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-block">
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="card" id="decInputText" style="display: none;">
-                <div class="card-header">Encryption Key</div>
+                <div class="card-header">Encryption Key Text (Max 128 characters)</div>
                 <div class="card-body">
                     <textarea name="userDecryptionKeyText" id="userDecryptionKeyText" class="form-control" rows="5" cols="25"></textarea>
                 </div>

@@ -32,25 +32,35 @@ class EncryptController extends Controller
     {
         if (request()->has('textToUpload')) {
             request()->validate([
-           'textToUpload'      => 'required|string|min:1|max:750',
-           'userEncryptionKeyText' => 'required_without_all:userEncryptionKeyFile,randomEncryptionKey|string|nullable|max:128',
-           'userEncryptionKeyFile' => 'file|max:2048',
-           'randomEncryptionKey' => 'string|nullable|max:4',
-           'options' => 'string|nullable|min:4|max:10',
-           'encChoice' => 'string|nullable|min:3|max:3',
-       ]);
-        } else {//if (request()->has('fileToUpload')) {
+             'textToUpload'          => 'required|string|min:1|max:750',
+             'userEncryptionKeyText' => 'required_without_all:userEncryptionKeyFile,randomEncryptionKey|string|nullable|max:128',
+             'userEncryptionKeyFile' => 'file|max:2048',
+             'randomEncryptionKey'   => 'string|nullable|max:4',
+             'options'               => 'string|nullable|min:4|max:10',
+             'encChoice'             => 'string|nullable|min:3|max:3',
+            ]);
+        } else {
             request()->validate([
-            'fileToUpload' => 'required|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:2048',
-            'userEncryptionKeyText' => 'required_without_all:userEncryptionKeyFile,randomEncryptionKey|string|nullable|max:128',
-            'userEncryptionKeyFile' => 'file|max:2048',
-            'randomEncryptionKey' => 'string|nullable|max:4',
-            'options' => 'string|nullable|min:4|max:10',
-            'encChoice' => 'string|nullable|min:3|max:3',
-      ]);
+              'fileToUpload'          => 'required|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:2048',
+              'userEncryptionKeyText' => 'required_without_all:userEncryptionKeyFile,randomEncryptionKey|string|nullable|max:128',
+              'userEncryptionKeyFile' => 'file|max:2048',
+              'randomEncryptionKey'   => 'string|nullable|max:4',
+              'options'               => 'string|nullable|min:4|max:10',
+              'encChoice'             => 'string|nullable|min:3|max:3',
+            ]);
+
+            if (request()->encChoice == 'AES') {
+                request()->validate([
+                'fileToUpload' => 'required|file|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:2048',
+                ]);
+            } elseif (request()->encChoice == 'RSA') {
+                request()->validate([
+                'fileToUpload' => 'required|file|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:10',
+                ]);
+            }
         }
         // dd(request()->all());
-        $request = request();
+        // $request = request();
         $response = $this->handle_req();
         // $response = $this->zip_it($this->handle_req());
         if (!is_null($response)) {
@@ -76,7 +86,7 @@ class EncryptController extends Controller
                     Storage::put('/image/enc_key', $enc_key);
                 } elseif (request()->encChoice == 'RSA') {
                     $rsa = new RSA();
-                    extract($rsa->createKey());
+                    extract($rsa->createKey(512));
                     $enc_key = $privatekey;
                     Storage::put('/image/priv_key.txt', $privatekey);
                     Storage::put('/image/pub_key.txt', $publickey);
@@ -105,6 +115,8 @@ class EncryptController extends Controller
         } elseif (request()->encChoice == 'SHA') {
             // $this->digestSHA($in);
             return response()->download(storage_path().'/app/image/out.enc', 'digest.txt', $this->digestSHA($in))->deleteFileAfterSend();
+        } else {
+            $data = null;
         }
         Storage::put('/image/out.enc', $data);
         return $this->zip_it($store_enc);
@@ -145,9 +157,9 @@ class EncryptController extends Controller
 
     public function encrypt_RSA(String $file, $privatekey)
     {
-        $rsa       = new RSA();
+        $rsa = new RSA();
         $rsa->loadKey($privatekey);
-        $ciphertext     = $rsa->encrypt($file);
+        $ciphertext = $rsa->encrypt($file);
         return $ciphertext;
     }
 

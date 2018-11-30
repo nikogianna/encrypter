@@ -2,7 +2,7 @@
 @section('fileOrText')
 
 <div class="card">
-    <div class="card-header">Upload File</div>
+    <div class="card-header" id="fileDecCard">File (Max size 2MB)</div>
     <div class="card-body">
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">

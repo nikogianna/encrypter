@@ -27,45 +27,47 @@ class DecryptController extends Controller
 
     public function upload()
     {
-
-      // dd(request()->all());
-
         if (request()->has('textToUpload')) {
             request()->validate([
-         'textToUpload'          => 'required|string|min:1|max:750',
-         'userDecryptionKeyText' => 'required_without:userDecryptionKeyFile|string|nullable|max:128',
-         'userDecryptionKeyFile' => 'file|max:2048',
-         // 'userIVText'            => 'required_without_all:userIVFile,encChoiceRSA|string|nullable|min:1|max:750',
-         // 'userIVFile'            => 'file|max:2048',
-         'encOptions' => 'string|nullable|min:10|max:10',
-         // 'IVOptions' => 'string|nullable|min:10|max:10',
-         'encChoiceAES' => 'string|nullable|min:4|max:5',
-         'encChoiceRSA' => 'string|nullable|min:4|max:5',
+             'textToUpload'          => 'required|string|min:1|max:750',
+             'userDecryptionKeyText' => 'required_without:userDecryptionKeyFile|string|nullable|max:128',
+             'userDecryptionKeyFile' => 'file|max:10',
+             'encOptions' => 'string|nullable|min:10|max:10',
+             'encChoiceAES' => 'string|nullable|min:4|max:5',
+             'encChoiceRSA' => 'string|nullable|min:4|max:5',
+            ]);
 
-      ]);
-            $filename = 'ecnrypted_text.txt';
-        } elseif (request()->has('fileToUpload')) {
+          $filename = 'ecnrypted_text.txt';
+
+        } else {
             request()->validate([
-         'fileToUpload'      => 'required|file|max:2048',
-         'userDecryptionKeyText' => 'required_without:userDecryptionKeyFile|string|nullable|max:128',
-         'userDecryptionKeyFile' => 'file|max:2048',
-         // 'userIVText'            => 'required_without_all:userIVFile,encChoiceRSA|string|nullable|min:1|max:750',
-         // 'userIVFile'            => 'file|max:2048',
-         'encOptions' => 'string|nullable|min:10|max:10',
-         // 'IVOptions' => 'string|nullable|min:10|max:10',
-         'encChoiceAES' => 'string|nullable|min:4|max:5',
-         'encChoiceRSA' => 'string|nullable|min:4|max:5',
+         // 'fileToUpload'      => 'required|file|max:2048',
+             'userDecryptionKeyText' => 'required_without:userDecryptionKeyFile|string|nullable|max:128',
+             'userDecryptionKeyFile' => 'file|max:10',
+             'encOptions' => 'string|nullable|min:10|max:10',
+             'encChoiceAES' => 'string|nullable|min:4|max:5',
+             'encChoiceRSA' => 'string|nullable|min:4|max:5',
+            ]);
 
-   ]);
-            $filename = 'ecnrypted_img.png';
+         if (request()->encChoiceAES == 'true') {
+             request()->validate([
+            'fileToUpload'      => 'required|file|max:2048',
+           ]);
+         } elseif (request()->encChoiceRSA == 'true') {
+           request()->validate([
+          'fileToUpload'      => 'required|file|max:10',
+         ]);
+         }
+
+          $filename = 'ecnrypted_img.png';
         }
         // dd(request()->all());
-        $request = request();
-        $this->handle_req($request);
+        // $request = request();
+        $this->handle_req();
         return response()->download(storage_path().'/app/image/out', $filename)->deleteFileAfterSend();
     }
 
-    public function handle_req(Request $request)
+    public function handle_req()
     {
         if (request()->has('textToUpload')) {
             $in = request()->textToUpload;
@@ -91,6 +93,8 @@ class DecryptController extends Controller
             $out = $this->decrypt_RSA($in, $enc_key);
         } elseif (request()->encChoiceAES == 'true') {
             $out = $this->decrypt_AES($in, $enc_key);
+        } else {
+            $out = null;
         }
 
         Storage::put('/image/out', $out);

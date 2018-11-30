@@ -20,6 +20,7 @@ $("#AESdec").change(function() {
 
         $(this).val('true');
         $('#RSAdec').val('false');
+        $('#fileDecCard').html('File (Max size 2MB)');
     }
 });
 
@@ -28,5 +29,6 @@ $("#RSAdec").change(function() {
 
         $(this).val('true');
         $('#AESdec').val('false');
+        $('#fileDecCard').html('File (Max size 10KB)');
     }
 });
