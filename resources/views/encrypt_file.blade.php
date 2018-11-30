@@ -12,11 +12,8 @@
           <div class="form-group">
               <input type="file" class="form-control-file" name="fileToUpload" id="exampleInputFile" aria-describedby="fileHelp">
               <small id="fileHelp" class="form-text text-muted">Please upload a file. Size should not be more than 2MB.</small>
-
               <input type="hidden" name="randomEncryptionKey" id="randomEncryptionKey" />
-
           </div>
       </div>
   </div>
-
 @endsection

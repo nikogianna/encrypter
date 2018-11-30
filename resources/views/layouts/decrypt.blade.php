@@ -14,18 +14,31 @@
     <div class="modal-body row">
         <div class="col-md-6 text-center">
             @yield('fileOrText')
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="encChoiceAES" id="AESdec" value='true' autocomplete="off" checked> AES
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="encChoiceRSA" id="RSAdec" value='false' autocomplete="off"> RSA
-                </label>
+            <div id="myDec">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active" data-toggle="collapse" href="#collapseDec">
+                        <input type="radio" name="encChoiceAES" id="AESdec" value='true' autocomplete="off" checked> AES
+                    </label>
+                    <label class="btn btn-secondary" data-toggle="collapse" href="#collapseDec2">
+                        <input type="radio" name="encChoiceRSA" id="RSAdec" value='false' autocomplete="off"> RSA
+                    </label>
+                </div>
+                <div class="accordion-group">
+                    <div class="panel-collapse collapse show" id="collapseDec" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseDec2" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-1 text-center">
-        </div>
-        <div class="col-md-5 text-center">
+
+        <div class="col-md-6 text-center">
             <div class="card" id="decInputFile">
                 <div class="card-header">Encryption Key File (Max size 10KB)</div>
                 <div class="card-body">
@@ -43,24 +56,41 @@
             </div>
             <div class="card" id="decInputText" style="display: none;">
                 <div class="card-header">Encryption Key Text (Max 128 characters)</div>
-                <div class="card-body">
-                    <textarea name="userDecryptionKeyText" id="userDecryptionKeyText" class="form-control" rows="5" cols="25"></textarea>
+                <div class="form-group">
+                    <textarea name="userDecryptionKeyText" id="userDecryptionKeyText" class="form-control" rows="3"></textarea>
                 </div>
             </div>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons" id="encOptions">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="encOptions" value="manualFile" id="decFile" autocomplete="off" checked>File
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="encOptions" value="manualText" id="decText" autocomplete="off">Text
-                </label>
+            <div id="myDec2">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" id="encOptions">
+                    <label class="btn btn-secondary active" data-toggle="collapse" href="#collapseDecFile">
+                        <input type="radio" name="encOptions" value="manualFile" id="decFile" autocomplete="off" checked>File
+                    </label>
+                    <label class="btn btn-secondary" data-toggle="collapse" href="#collapseDecText">
+                        <input type="radio" name="encOptions" value="manualText" id="decText" autocomplete="off">Text
+                    </label>
+                </div>
+
+                <div class="accordion-group">
+                    <div class="panel-collapse collapse show" id="collapseDecFile" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseDecText" style="text-align: center;">
+                        <div class="card card-body" id="collapseDecTextInner" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    {{-- Submit Button --}}
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <button class="btn text-center" type="submit">Upload</button>
+                <button class="btn text-center" style="color: #FFF; background-color: rgb(192,0,0); border-radius: 20px;" type="submit">Submit</button>
             </div>
         </div>
     </div>

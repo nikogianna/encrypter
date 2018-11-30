@@ -30,6 +30,9 @@ $("#RSAdec").change(function() {
         $(this).val('true');
         $('#AESdec').val('false');
         $('#fileDecCard').html('File (Max size 10KB)');
+
+            $('#collapseDecTextInner').text("Your New Header");
+        // });
     }
 });
 
@@ -60,12 +63,30 @@ $("#SHA").change(function() {
         $('#options').attr('style', 'opacity:0.4');
 
         $('#fileCard').html('File (Max size 2MB)');
+
+        $('#myGroup2').find('.collapse.show').collapse('hide');
+
     }
 });
 
 var $myGroup = $('#myGroup');
-$myGroup.on('show.bs.collapse','.collapse', function() {
+$myGroup.on('show.bs.collapse', '.collapse', function() {
     $myGroup.find('.collapse.show').collapse('hide');
+});
+
+var $myGroup2 = $('#myGroup2');
+$myGroup2.on('show.bs.collapse', '.collapse', function() {
+    $myGroup2.find('.collapse.show').collapse('hide');
+});
+
+var $myDec = $('#myDec');
+$myDec.on('show.bs.collapse', '.collapse', function() {
+    $myDec.find('.collapse.show').collapse('hide');
+});
+
+var $myDec2 = $('#myDec2');
+$myDec2.on('show.bs.collapse', '.collapse', function() {
+    $myDec2.find('.collapse.show').collapse('hide');
 });
 
 $("#AES").change(function() {
@@ -75,12 +96,32 @@ $("#AES").change(function() {
             if ($('#auto').prop("checked") != true) {
                 $('#encInputFile').attr('style', 'pointer-events:auto');
                 $('#encInputFile').attr('style', 'opacity:1.0');
+
+                if ($('#collapseEncFile').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncFile').collapse('show');
+                }
+            } else {
+                if ($('#collapseEncAuto').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncAuto').collapse('show');
+                }
             }
         } else {
             if ($('#auto').prop("checked") != true) {
 
                 $('#encInputText').attr('style', 'pointer-events:auto');
                 $('#encInputText').attr('style', 'opacity:1.0');
+
+                if ($('#collapseEncText').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncText').collapse('show');
+                }
+            } else {
+                if ($('#collapseEncAuto').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncAuto').collapse('show');
+                }
             }
         }
         $('#options').attr('style', 'pointer-events:auto');
@@ -98,12 +139,32 @@ $("#RSA").change(function() {
             if ($('#auto').prop("checked") != true) {
                 $('#encInputFile').attr('style', 'pointer-events:auto');
                 $('#encInputFile').attr('style', 'opacity:1.0');
+
+  if ($('#collapseEncFile').is(":hidden")) {
+                        $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncFile').collapse('show');
+                }
+            } else {
+                if ($('#collapseEncAuto').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncAuto').collapse('show');
+                }
             }
         } else {
             if ($('#auto').prop("checked") != true) {
 
                 $('#encInputText').attr('style', 'pointer-events:auto');
                 $('#encInputText').attr('style', 'opacity:1.0');
+
+                if ($('#collapseEncText').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncText').collapse('show');
+                }
+            } else {
+                if ($('#collapseEncAuto').is(":hidden")) {
+                    $('#myGroup2').find('.collapse.show').collapse('hide');
+                    $('#collapseEncAuto').collapse('show');
+                }
             }
         }
         $('#options').attr('style', 'pointer-events:auto');

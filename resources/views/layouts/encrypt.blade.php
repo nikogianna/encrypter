@@ -15,47 +15,35 @@
         <div class="col-md-6 text-center">
             @yield('fileOrText')
             <div id="myGroup">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active" id="AESpop" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" data-parent="#myGroup">
-
-                    <input type="radio" name="encChoice" id="AES" value='AES' autocomplete="off" checked> AES
-
-                </label>
-                <label class="btn btn-secondary" id="RSApop" data-toggle="collapse" href="#collapseExample2" aria-expanded="true" aria-controls="collapseExample2" data-parent="#myGroup">
-                    <input type="radio" name="encChoice" id="RSA" value='RSA' autocomplete="off"> RSA
-                </label>
-                <label class="btn btn-secondary" id="SHApop" data-toggle="collapse" href="#collapseExample3" aria-expanded="true" aria-controls="collapseExample3" data-parent="#myGroup">
-                    <input type="radio" name="encChoice" id="SHA" value='SHA' autocomplete="off"> SHA
-                </label>
-            </div>
-            {{-- <div id="accordion"> --}}
-            <div class="accordion-group">
-
-                <div class="panel-collapse collapse show" id="collapseExample">
-                    <div class="card card-body" style="  align: center; width: 70%; background-color: #d2cfcf; border-radius: 20px;">
-                    {{-- <div class="card card-body" style="width: 70%; background-color: #d2cfcf; border-radius: 20px;"> --}}
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                    </div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active" id="AESpop" data-toggle="collapse" href="#collapseExample">
+                        <input type="radio" name="encChoice" id="AES" value='AES' autocomplete="off" checked> AES
+                    </label>
+                    <label class="btn btn-secondary" id="RSApop" data-toggle="collapse" href="#collapseExample2">
+                        <input type="radio" name="encChoice" id="RSA" value='RSA' autocomplete="off"> RSA
+                    </label>
+                    <label class="btn btn-secondary" id="SHApop" data-toggle="collapse" href="#collapseExample3">
+                        <input type="radio" name="encChoice" id="SHA" value='SHA' autocomplete="off"> SHA
+                    </label>
                 </div>
-            {{-- </div> --}}
-
-            {{-- <div id="accordion"> --}}
-                <div class="panel-collapse collapse" id="collapseExample2">
-                    <div class="card card-body" style="width: 70%; background-color: #d2cfcf; border-radius: 20px;">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                <div class="accordion-group">
+                    <div class="panel-collapse collapse show" id="collapseExample" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
                     </div>
-                </div>
-            {{-- </div> --}}
-
-            {{-- <div id="accordion"> --}}
-                <div class="panel-collapse collapse" id="collapseExample3">
-                    <div class="card card-body" style="width: 70%; background-color: #d2cfcf; border-radius: 20px;">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    <div class="panel-collapse collapse" id="collapseExample2" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseExample3" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-
         </div>
         <div class="col-md-6 text-center">
 
@@ -79,33 +67,46 @@
             {{-- Text Input --}}
             <div class="card" id="encInputText" style="display: none; pointer-events: none; opacity: 0.4;">
                 <div class="card-header">Encryption Key (Max 128 characters)</div>
-                <div class="card-body">
-                    <textarea name="userEncryptionKeyText" id="userEncryptionKeyText" class="form-control" rows="2" cols="25"></textarea>
+                <div class="form-group">
+                    <textarea name="userEncryptionKeyText" id="userEncryptionKeyText" class="form-control" rows="3"></textarea>
                 </div>
             </div>
 
             {{-- Choose Input Source --}}
-            <div class="btn-group btn-group-toggle" data-toggle="buttons" id="options">
-                <label class="btn btn-secondary active">
-                    <input type="radio" id="auto" name="options" value='auto' autocomplete="off" checked> Auto-Key
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" value='manualFile' id="manualFile" autocomplete="off"> File-Key
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" value='manualText' id="manualText" autocomplete="off"> Text-Key
-                </label>
+            <div id="myGroup2">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" id="options">
+                    <label class="btn btn-secondary active" data-toggle="collapse" href="#collapseEncAuto">
+                        <input type="radio" id="auto" name="options" value='auto' autocomplete="off" checked> Auto-Key
+                    </label>
+                    <label class="btn btn-secondary" data-toggle="collapse" href="#collapseEncFile">
+                        <input type="radio" name="options" value='manualFile' id="manualFile" autocomplete="off"> File-Key
+                    </label>
+                    <label class="btn btn-secondary" data-toggle="collapse" href="#collapseEncText">
+                        <input type="radio" name="options" value='manualText' id="manualText" autocomplete="off"> Text-Key
+                    </label>
+                </div>
+                <div class="accordion-group">
+                    <div class="panel-collapse collapse show" id="collapseEncAuto" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseEncFile" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%;  background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseEncText" style="text-align: center;">
+                        <div class="card card-body" style="margin:auto; width: 70%; background-color: #d2cfcf;">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     {{-- Submit Button --}}
-    {{-- <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <button class="btn text-center" type="submit">Submit</button>
-            </div>
-        </div>
-    </div> --}}
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
