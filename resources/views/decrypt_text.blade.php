@@ -9,3 +9,11 @@
 </div>
 
 @endsection
+
+@section('fileOrText2')
+   some text
+@endsection
+
+@section('fileOrText3')
+   text
+@endsection

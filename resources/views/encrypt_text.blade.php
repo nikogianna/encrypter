@@ -10,3 +10,7 @@
 
 
 @endsection
+
+@section('fileOrText2')
+   some text
+@endsection

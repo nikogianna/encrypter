@@ -17,3 +17,7 @@
       </div>
   </div>
 @endsection
+
+@section('fileOrText2')
+  a file
+@endsection

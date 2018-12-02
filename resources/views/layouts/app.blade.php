@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/favicon.png') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -57,7 +58,7 @@
     {{-- <nav class="navbar navbar-expand-md navbar-dark navbar-laravel"> --}}
     <footer class="footer" style="position: absolute;right: 0;bottom: 0;left: 0;padding: 1rem;background-color: rgb(192, 0, 0);text-align: center;">
       <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <span class="text-muted">Copyright © 2018 SCYTALE Group. All Rights Reserved.</span>
       </div>
     </footer>
   {{-- </nav> --}}

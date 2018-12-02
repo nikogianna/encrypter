@@ -34,16 +34,16 @@ class EncryptController extends Controller
             request()->validate([
              'textToUpload'          => 'required|string|min:1|max:750',
              'userEncryptionKeyText' => 'required_without_all:userEncryptionKeyFile,randomEncryptionKey|string|nullable|max:128',
-             'userEncryptionKeyFile' => 'file|max:2048',
+             'userEncryptionKeyFile' => 'file|max:10',
              'randomEncryptionKey'   => 'string|nullable|max:4',
              'options'               => 'string|nullable|min:4|max:10',
              'encChoice'             => 'string|nullable|min:3|max:3',
             ]);
         } else {
             request()->validate([
-              'fileToUpload'          => 'required|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:2048',
+              // 'fileToUpload'          => 'required|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:2048',
               'userEncryptionKeyText' => 'required_without_all:userEncryptionKeyFile,randomEncryptionKey|string|nullable|max:128',
-              'userEncryptionKeyFile' => 'file|max:2048',
+              'userEncryptionKeyFile' => 'file|max:10',
               'randomEncryptionKey'   => 'string|nullable|max:4',
               'options'               => 'string|nullable|min:4|max:10',
               'encChoice'             => 'string|nullable|min:3|max:3',
@@ -82,7 +82,7 @@ class EncryptController extends Controller
             if (request()->options == 'auto') {
                 $store_enc = true;
                 if (request()->encChoice == 'AES') {
-                    $enc_key = openssl_random_pseudo_bytes(64);
+                    $enc_key = openssl_random_pseudo_bytes(512);
                     Storage::put('/image/enc_key', $enc_key);
                 } elseif (request()->encChoice == 'RSA') {
                     $rsa = new RSA();

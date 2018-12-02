@@ -17,3 +17,11 @@
 </div>
 </div>
 @endsection
+
+@section('fileOrText2')
+   a file
+@endsection
+
+@section('fileOrText3')
+   file
+@endsection

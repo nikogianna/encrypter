@@ -31,7 +31,7 @@ $("#RSAdec").change(function() {
         $('#AESdec').val('false');
         $('#fileDecCard').html('File (Max size 10KB)');
 
-            $('#collapseDecTextInner').text("Your New Header");
+            // $('#collapseDecTextInner').text("Your New Header");
         // });
     }
 });
