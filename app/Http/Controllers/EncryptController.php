@@ -57,6 +57,10 @@ class EncryptController extends Controller
                 request()->validate([
                 'fileToUpload' => 'required|file|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:10',
                 ]);
+            } else {
+              request()->validate([
+              'fileToUpload' => 'required|file|mimes:jpeg,png,jpg,zip,pdf,doc,docx,txt,asc|max:2048',
+              ]);
             }
         }
         // dd(request()->all());
