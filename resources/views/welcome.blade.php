@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400" />
 
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/TweenMax.min.js'></script>
+{{-- <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/TweenMax.min.js'></script> --}}
 
 <div class="container">
 
@@ -51,6 +51,5 @@
 </div>
 {{-- </div> --}}
 
-{{-- <script  src="js/index.js"></script> --}}
-<script src="{{ asset('js/all.js') }}"></script>
+<script src="{{ asset('js/welcome.js') }}"></script>
 @endsection

@@ -116,6 +116,6 @@
     </div>
 </form>
 
-<script type="text/javascript" src="{{ URL::asset('js/all.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/encrypt.js') }}"></script>
 
 @endsection

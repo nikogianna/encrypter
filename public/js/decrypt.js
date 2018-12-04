@@ -32,3 +32,13 @@ $("#RSAdec").change(function() {
         $('#fileDecCard').html('File (Max size 10KB)');
     }
 });
+
+var $myDec = $('#myDec');
+$myDec.on('show.bs.collapse', '.collapse', function() {
+    $myDec.find('.collapse.show').collapse('hide');
+});
+
+var $myDec2 = $('#myDec2');
+$myDec2.on('show.bs.collapse', '.collapse', function() {
+    $myDec2.find('.collapse.show').collapse('hide');
+});
